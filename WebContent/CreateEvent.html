@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Create Event</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<title>Create Event</title>
+<link href="css/jquery-ui.css" rel="stylesheet">
+<script src="js/jquery-1.11.2.js"></script>
+<script src="js/jquery-ui.js"></script>
+</head>
+<body>
+<nav>
+<a href="index.html">Home</a>
+<a href="GameList.html">Game List</a>
+<a href="CreateEvent.html">Host a game</a>
+<form>
+  Sign in:<br>
+  <input type="text" name="login"><br>
+  password:<br>
+  <input type="text" name="password"><br> 
+</form>
+</nav>
+<div>
+<form>
+Game Name:<br>
+<input type="text" name="game"><br>
+
+Place game will be:<br>
+<input type="text" name="place"><br>
+
+  Game (date and time):<br>
+   <input type="datetime-local" name="bdaytime"><br>
+
+<div class="ui-widget">
+	<label for="tags"> Games3:<br>
+	 </label> <input id="tags">
+</div>
+<p>Address:<br>
+<input type="text" size="60" name="address" placeholder="101 W. Game Knight Rd. Detroit, MI">
+</p>
+Description:<br>
+<TEXTAREA Name="content" ROWS=15 COLS=40></TEXTAREA>
+<br>
+<input type="submit"></form>
+
+</div>
+
+<script>
+
+$(function() {
+	$('#tags').keypress(function() {
+		$.ajax({
+			url : "TestServ",
+			type : "post",
+			data : '',
+			success : function(data) {
+				$("#tags").autocomplete({
+					source : data
+				});
+			},
+			error : function(data, status, er) {
+				console.log(data + "_" + status + "_" + er);
+			},
+		});
+	});
+});
+
+</script>
+</body>
+</html>
